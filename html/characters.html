@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagens</title>
+    <script src="./bootstrap.bundle.min.js"></script>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    
+    <div class="slideImg img-fluid col-12 body" style="background-image: url(../img/Interrogatorio.png); background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; margin: 0; width: 100%; height: 100%; position: absolute" id="telaEscolhaPersonagem">
+        <h1 style="position: relative; font-family: 'Rubik', sans-serif; font-size: 60px; color: #FFF; text-shadow: black 2px 2px 2px; text-align: center; width: 900px; margin-top: 6.5%;">ESCOLHA UM SUSPEITO PARA INTERROGAR</h1>
+        <div>
+            
+        </div>
+        <img src="../img/rectangle.png" style="position:absolute; width: 100%; height: 25vh; margin-top: 75vh;" >
+        
+        <div class="charCards col-10" style="display: flex; justify-content:space-evenly; align-items: center; width: 100%; position: absolute; margin-top: 32vh;">
+            <div class="teste">
+                <img src="../img/Suspeito1.png" style="width: 32vh;" onclick="escolherPersonagem(1)">
+            </div>
+            <div class="teste">
+                <img src="../img/Suspeito2.png" style="width: 32vh;" onclick="escolherPersonagem(2)">
+            </div>
+            <div class="teste">
+                <img src="../img/Suspeito3.png" style="width: 32vh;" onclick="escolherPersonagem(3)">
+            </div>
+            <div class="teste">
+                <img src="../img/Suspeito4.png" style="width: 32vh;" onclick="escolherPersonagem(4)">
+            </div>
+            <div class="teste">
+                <img src="../img/Suspeito5.png" style="width: 32vh;" onclick="escolherPersonagem(5)">
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content:right; align-items: center; width: 100%; position: absolute; margin-top: 88vh; margin-right: 12.7vh;">
+            <button style="color: #666; background-color: #333; width: 30vh;height: 5.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 3vh; border-style: solid; border-radius: 8px; position: absolute; justify-content: right; margin-top: 2vh; margin-right: 1vh;" id="prenderCulpado" disabled onclick="" >Prender Culpado</button>
+            
+        </div>
+        
+    </div>
+
+    <!-- <div class="slideImg img-fluid col-12 body" style="background-image: url(../img/officenoir.jpg); background-repeat: no-repeat; background-size: cover; display: flex; align-items: center; justify-content: flex-start; margin: 0; width: 100%; position: absolute"  id="left_img">
+        <img src="../img/next.png" class="proxima">      
+    </div> -->
+
+
+
+    <div class="personagem img-fluid col-12 body" style="background-image: url(../img/InterrogacaoSuspeito1.png); background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; margin: 0; width: 100%; height: 100%; position: absolute" id="Personagem1" >
+
+        <div class="botoes" style="display: flex; flex-direction: column ;justify-content:flex-start; align-items:flex-end; width: 100%; position: relative; margin-top: 16%;">
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char1pergunta1" class="botaoPersonagem1" onclick="desabilitarBotaoEMostrarResposta('char1pergunta1', 1, 1)"> O que aconteceu essa noite?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char1pergunta2"  class="botaoPersonagem1" onclick="desabilitarBotaoEMostrarResposta('char1pergunta2', 1, 2)" >  Como você conheceu a vítima?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char1pergunta3"  class="botaoPersonagem1" onclick="desabilitarBotaoEMostrarResposta('char1pergunta3', 1, 3)">  Onde você estava na hora do crime?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char1pergunta4"  class="botaoPersonagem1" onclick="desabilitarBotaoEMostrarResposta('char1pergunta4', 1, 4)">  Quem você acha que é o culpado?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char1pergunta5"  class="botaoPersonagem1" onclick="desabilitarBotaoEMostrarResposta('char1pergunta5', 1, 5)">  Por que está sem camisa?
+            </button>
+
+        </div>
+
+        <img src="../img/rectangle.png" style="position:absolute; width: 100%; height: 28vh; margin-top: 72vh;" >
+        
+        <div class="col-12 respostasPersonagem1" style="position: absolute; font-family: 'Rubik', sans-serif; font-size: 30px; color: #FFF; text-align: center; width: 1200px; height: 60px; margin-top: 4.5%;">
+            <p style="position: relative; margin-top: 70vh;" id="p1Resposta1">Eu trouxe a Verônica para festa, na verdade ela não queria muito vir, mas eu insisti. Começou devagar, mas depois ficou divertido. Até eu quebrar uma garrafa e ir para o hospital.<br><i style="color: yellow;"> - Que horas você voltou? </i><br> Por volta de meia noite e meia.</p>
+            <p style="position: relative; margin-top: 69vh;" id="p1Resposta2">Eu sou amigo do Vinicius e da Verônica há anos. Eu acabei conhecendo porque ele sempre aparecia quando a gente saía junto. <br><i style="color: yellow;">- E como é a sua relação com ele?</i> <br>Eu nunca tive problemas com ele… Quer dizer, eu também nunca tive muita coisa a favor. A gente não é, nunca foi muito próximo.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p1Resposta3">Eu estava no hospital, eu me cortei com uma garrafa quebrada. Levei alguns pontos <br><i style="color: yellow;"> - Tem alguém que confirma essa história? </i> <br>A Verônica. Ela me levou pro hospital, com a mão cortada é difícil de dirigir.</p>
+            <p style="position: relative; margin-top: 75vh;" id="p1Resposta4">É difícil acusar as pessoas assim. Não acho que ninguém faria isso. Mas o Igor ficou alterado hoje, e os dois brigaram, eu nunca tinha visto ele tão nervoso antes.
+            </p>
+            <p style="position: relative; margin-top: 75vh;" id="p1Resposta5">Por que ficou suja de sangue e eu tive que jogar fora. Eu cortei a mão em uma garrafa quebrada e a camisa ficou um desastre.</p>
+        </div>
+        
+
+    </div>
+
+
+    <div class="personagem img-fluid col-12 body" style="background-image: url(../img/InterrogacaoSuspeito2.png); background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; margin: 0; width: 100%; height: 100%; position: absolute" id="Personagem2" >
+
+        <div class="botoes" style="display: flex; flex-direction: column ;justify-content:flex-start; align-items:flex-end; width: 100%; position: relative; margin-top: 16%;">
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char2pergunta1" class="botaoPersonagem2" onclick="desabilitarBotaoEMostrarResposta('char2pergunta1', 2, 1)" > O que aconteceu essa noite?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char2pergunta2" class="botaoPersonagem2" onclick="desabilitarBotaoEMostrarResposta('char2pergunta2', 2, 2)">  Como você conheceu a vítima?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char2pergunta3" class="botaoPersonagem2" onclick="desabilitarBotaoEMostrarResposta('char2pergunta3', 2, 3)">  Onde você estava na hora do crime?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char2pergunta4" class="botaoPersonagem2" onclick="desabilitarBotaoEMostrarResposta('char2pergunta4', 2, 4)">  Quem você acha que é o culpado?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char2pergunta5" class="botaoPersonagem2" onclick="desabilitarBotaoEMostrarResposta('char2pergunta5', 2, 5)">  Por que o cheiro de gasolina?
+            </button>
+        </div>
+
+        <img src="../img/rectangle.png" style="position:absolute; width: 100%; height: 28vh; margin-top: 72vh;" >
+
+        <div class="col-12 respostasPersonagem1" style="position: absolute; font-family: 'Rubik', sans-serif; font-size: 30px; color: #FFF; text-align: center; width: 1200px; height: 60px; margin-top: 4.5%;">
+            <p style="position: relative; margin-top: 70vh;" id="p2Resposta1">Eu cheguei atrasado. Eu estava… em outro lugar, outra festa. Daí logo quando eu cheguei eu vi o Igor saindo, passou direto e nem me cumprimentou. <br>Eu fiquei até a cerveja acabar, e daí eu saí pra comprar mais. Mas quando eu cheguei, não tinha ninguém aqui.</p>
+            <p style="position: relative; margin-top: 73vh;" id="p2Resposta2">Ele é meu primo, a gente se conhece desde criança. Sempre fomos amigos. <br><i style="color: yellow;">- E como é a relação de vocês agora?</i> <br>É boa.</p>
+            <p style="position: relative; margin-top: 72vh;" id="p2Resposta3">Eu estava no posto de gasolina, abastecendo meu carro. <br><i style="color: yellow;">- Tem alguém que confirma a sua história?</i> <br>Eu tenho uma nota fiscal. </p>
+            <p style="position: relative; margin-top: 70vh;" id="p2Resposta4">Eu não sei. Conheço todo mundo aqui desde muito novo, então é difícil dizer. <br> Mas se alguém tinha motivo, era a Bianca. Meu primo não era o melhor namorado, e teve alguns casos por aí. Bianca é muito impulsiva, nem consigo imaginar o que aconteceria se ela descobrisse.</p>
+            <p style="position: relative; margin-top: 73vh;" id="p2Resposta5">Bom. É engraçado. Agora não tem mais graça. O meu carro é muito velho, e tem um problema no tanque. Sempre que eu vou abastecer, quando eu abro a tampa acaba vazando um pouco.</p>
+        </div>
+    </div>
+
+
+    <div class="personagem img-fluid col-12 body" style="background-image: url(../img/InterrogacaoSuspeito3.png); background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; margin: 0; width: 100%; height: 100%; position: absolute" id="Personagem3" >
+
+        <div class="botoes" style="display: flex; flex-direction: column ;justify-content:flex-start; align-items:flex-end; width: 100%; position: relative; margin-top: 16%;">
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char3pergunta1" class="botaoPersonagem3" onclick="desabilitarBotaoEMostrarResposta('char3pergunta1', 3, 1)"> O que aconteceu essa noite?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char3pergunta2" class="botaoPersonagem3"  onclick="desabilitarBotaoEMostrarResposta('char3pergunta2', 3, 2)">  Como você conheceu a vítima?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char3pergunta3" class="botaoPersonagem3"  onclick="desabilitarBotaoEMostrarResposta('char3pergunta3', 3, 3)">  Onde você estava na hora do crime?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char3pergunta4" class="botaoPersonagem3"  onclick="desabilitarBotaoEMostrarResposta('char3pergunta4', 3, 4)">  Quem você acha que é o culpado?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char3pergunta5" class="botaoPersonagem3"  onclick="desabilitarBotaoEMostrarResposta('char3pergunta5', 3, 5)">  O que aconteceu com o seu olho?
+            </button>
+        </div>
+
+        <img src="../img/rectangle.png" style="position:absolute; width: 100%; height: 28vh; margin-top: 72vh;" >
+        
+        <div class="col-12 respostasPersonagem1" style="position: absolute; font-family: 'Rubik', sans-serif; font-size: 30px; color: #FFF; text-align: center; width: 1200px; height: 60px; margin-top: 4.5%;">
+            <p style="position: relative; margin-top: 67vh;" id="p3Resposta1">Eu cheguei mais ou menos sete e meia, eu vim porque me chamaram… <br><i style="color: yellow;">- Quem te chamou?</i> <br> A Bianca. Disse que queria conversar comigo. <br><i style="color: yellow;"> - O que ela queria? </i> <br> Me falou que tinha tomado um chifre. Eu fui conversar com o namorado dela, e… Eu fui embora logo em seguida.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p3Resposta2">A gente se conheceu na escola. Fomos melhores amigos durante anos. <br><i style="color: yellow;">- O que aconteceu?</i>  <br> Eu sou apaixonado pela Bianca, sempre fui, e quando ela me largou, ele foi imediatamente atrás igual um cachorro no cio.</p>
+            <p style="position: relative; margin-top: 67vh; font-size: 27px;" id="p3Resposta3">Eu fui embora daqui por volta das 9 horas, então, eu não estava aqui quando aconteceu. <br><i style="color: yellow;"> - O que você foi fazer?</i> <br>Eu estava puto e com fome, parei num restaurante para comer, e fiquei lá pra dar uma acalmada. <br><i style="color: yellow;"> - Mas você voltou para a mansão. Por quê? </i> <br> Sim, eu voltei. Eu recebi uma mensagem no grupo falando que ele tinha ido embora, daí eu pensei que talvez eu pudesse conversar com a Bianca.</p>
+            <p style="position: relative; margin-top: 72vh;" id="p3Resposta4">O Vinícius. Ele mexe com droga, e os dois estavam sempre brigando. O Vinícius devia dinheiro, já roubou coisa para comprar droga, entre outras coisas. Eu acho que numa dessas brigas ele acabou perdendo a cabeça, sabe? Trágico.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p3Resposta5">Eu levei um soco. Eu fui conversar com a vítima e ele ficou muito puto e me bateu.</p>
+        </div>
+    </div>
+
+
+    <div class="personagem img-fluid col-12 body" style="background-image: url(../img/InterrogacaoSuspeito4.png); background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; margin: 0; width: 100%; height: 100%; position: absolute" id="Personagem4" >
+
+        <div class="botoes" style="display: flex; flex-direction: column ;justify-content:flex-start; align-items:flex-end; width: 100%; position: relative; margin-top: 16%;">
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char4pergunta1" class="botaoPersonagem4"  onclick="desabilitarBotaoEMostrarResposta('char4pergunta1', 4, 1)"> O que aconteceu essa noite?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char4pergunta2" class="botaoPersonagem4" onclick="desabilitarBotaoEMostrarResposta('char4pergunta2', 4, 2)">  Como você conheceu a vítima?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char4pergunta3" class="botaoPersonagem4" onclick="desabilitarBotaoEMostrarResposta('char4pergunta3', 4, 3)">  Onde você estava na hora do crime?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char4pergunta4" class="botaoPersonagem4" onclick="desabilitarBotaoEMostrarResposta('char4pergunta4', 4, 4)">  Quem você acha que é o culpado?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char4pergunta5" class="botaoPersonagem4" onclick="desabilitarBotaoEMostrarResposta('char4pergunta5', 4, 5)">  De quem é o canivete que acharam na sua bolsa?
+            </button>
+        </div>
+
+        <img src="../img/rectangle.png" style="position:absolute; width: 100%; height: 28vh; margin-top: 72vh;" >
+
+        <div class="col-12 respostasPersonagem1" style="position: absolute; font-family: 'Rubik', sans-serif; font-size: 30px; color: #FFF; text-align: center; width: 1200px; height: 60px; margin-top: 4.5%;">
+            <p style="position: relative; margin-top: 67vh;" id="p4Resposta1">Eu vim aqui com o José. Na verdade, eu fui buscá-lo em casa. Nós chegamos cedo, a festa estava boa, até o Igor chegar. Ele ficou com ciúmes, e os dois acabaram brigando por minha causa. <br><i style="color: yellow;">- E depois?</i> <br>Eu fiquei exausta. Tomei uma caipirinha e fui dormir. Quando eu acordei, tinha uma mensagem falando que ele tinha ido embora.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p4Resposta2">Eu sempre fui amiga do José. Eu, ele e o Igor éramos melhores amigos na escola. A gente tinha começado a namorar seis meses atrás. <br><i style="color: yellow;">- E como era a relação?</i> <br>Boa. Tem seus altos e baixos, como todo mundo, mas era uma relação boa.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p4Resposta3">Eu estava dormindo. <br><i style="color: yellow;">- E não ouviu nenhum barulho? Não percebeu nada acontecendo?</i> <br> Eu tenho sono pesado.</p>
+            <p style="position: relative; margin-top: 67vh;" id="p4Resposta4">Eu não acho certo acusar ninguém. Mas também não acho que eu devia esconder isso. Ele foi uma pessoa muito ruim com a Verônica. Muito, muito mesmo. No ensino médio, ela sofreu tanto que teve ataques de pânico. <br> Se alguém tem motivo para querer matar ele, é ela. E honestamente? Eu não julgo. Ele a fez passar o inferno na terra. Mas eu também não vejo como ela ia conseguir, a Verônica é um amor de pessoa!</p>
+            <p style="position: relative; margin-top: 70vh;" id="p4Resposta5">É meu, eu trouxe para abrir garrafa. Estava comigo o dia todo.</p>
+        </div>
+    </div>
+
+
+    <div class="personagem img-fluid col-12 body" style="background-image: url(../img/InterrogacaoSuspeito5.png); background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; margin: 0; width: 100%; height: 100%; position: absolute" id="Personagem5" >
+
+        <div class="botoes" style="display: flex; flex-direction: column ;justify-content:flex-start; align-items:flex-end; width: 100%; position: relative; margin-top: 16%;">
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char5pergunta1" class="botaoPersonagem5" onclick="desabilitarBotaoEMostrarResposta('char5pergunta1', 5, 1)"> O que aconteceu essa noite?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char5pergunta2" class="botaoPersonagem5" onclick="desabilitarBotaoEMostrarResposta('char5pergunta2', 5, 2)">  Como você conheceu a vítima?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char5pergunta3" class="botaoPersonagem5" onclick="desabilitarBotaoEMostrarResposta('char5pergunta3', 5, 3)">  Onde você estava na hora do crime?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char5pergunta4" class="botaoPersonagem5" onclick="desabilitarBotaoEMostrarResposta('char5pergunta4', 5, 4)">  Quem você acha que é o culpado?
+            </button>
+            <button style="color: #000; background-color: yellow; width: 40vh;height: 6.5vh; font-family: 'Rubik', sans-serif; font-style: medium;font-size: 2.5vh; color: #000; border-style: solid; border-radius: 8px; margin-bottom: 10px; margin-right: 100px;" id="char5pergunta5" class="botaoPersonagem5" onclick="desabilitarBotaoEMostrarResposta('char5pergunta5', 5, 5)">  Reconhece esse isqueiro? 
+            </button>
+        </div>
+
+        <img src="../img/rectangle.png" style="position:absolute; width: 100%; height: 28vh; margin-top: 72vh;" >
+
+        <div class="col-12 respostasPersonagem1" style="position: absolute; font-family: 'Rubik', sans-serif; font-size: 30px; color: #FFF; text-align: center; width: 1200px; height: 60px; margin-top: 4.5%;">
+            <p style="position: relative; margin-top: 68vh;" id="p5Resposta1">Eu peguei carona com o Cássio. A gente chegou, e o José e a Bianca já estavam aqui. Estava meio estranho o clima entre os dois. <br><i style="color: yellow;">- O que aconteceu na festa?</i> <br> Todo mundo bebeu bastante, mas parece que o Igor bebeu mais do que devia. Ele trocou uns socos com o José.</p>
+            <p style="position: relative; margin-top: 68vh;" id="p5Resposta2">A gente se conheceu no ensino médio. <br><i style="color: yellow;">- E como é sua relação com ele?</i> <br> Na época a gente não se dava muito bem. Ele falava umas coisas ruins sobre mim e tal, mas como a gente tinha o mesmo círculo de amigos, a gente aprendeu a se tolerar, e depois até viramos amigos.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p5Resposta3">Eu fui levar o Cássio ao hospital. Ele cortou a mão com algum vidro, e a gente foi lá pra dar ponto. <br><i style="color: yellow;"> - E você voltou para a mansão?</i> <br> Sim, a gente chegou por volta de 1h.</p>
+            <p style="position: relative; margin-top: 72vh;" id="p5Resposta4">O Igor. Eles brigaram feio. Os dois tem história, sempre ficaram competindo para namorar com a Bianca. <br> Ele tem ciúmes dela desde o dia em que os dois terminaram.</p>
+            <p style="position: relative; margin-top: 70vh;" id="p5Resposta5">É meu, eu tinha perdido no meio da festa.</p>
+        </div>
+    </div>
+    
+    <img src="../img/previous.png" style="position: relative; margin: 50px" class="voltar" id="previous">
+    
+
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+    body {
+        margin: 0;
+    }    
+
+</style>
+
+<script>
+
+    $(document).ready(function () {
+        
+        // Torna o botão de voltar página funcional
+        $("body img.voltar").click(function (event) {
+            event.preventDefault();
+
+            charactersEtapa--;
+                
+            if (charactersEtapa == 1) {
+                $("#telaEscolhaPersonagem").show();
+                $("#Personagem1").hide();
+                $("#Personagem2").hide();
+                $("#Personagem3").hide();
+                $("#Personagem4").hide();
+                $("#Personagem5").hide();
+            }
+            else if (charactersEtapa == 0) {
+                window.location.href = "./intro.html";
+                //introEtapa = 1;
+            }
+        });
+    });
+
+    var charactersEtapa = 1;
+
+    $("#Personagem1").hide();
+    $("#Personagem2").hide();
+    $("#Personagem3").hide();
+    $("#Personagem4").hide();
+    $("#Personagem5").hide();
+    $("#p1Resposta1").hide();
+    $("#p1Resposta2").hide();
+    $("#p1Resposta3").hide();
+    $("#p1Resposta4").hide();
+    $("#p1Resposta5").hide();
+    $("#p2Resposta1").hide();
+    $("#p2Resposta2").hide();
+    $("#p2Resposta3").hide();
+    $("#p2Resposta4").hide();
+    $("#p2Resposta5").hide();
+    $("#p3Resposta1").hide();
+    $("#p3Resposta2").hide();
+    $("#p3Resposta3").hide();
+    $("#p3Resposta4").hide();
+    $("#p3Resposta5").hide();
+    $("#p4Resposta1").hide();
+    $("#p4Resposta2").hide();
+    $("#p4Resposta3").hide();
+    $("#p4Resposta4").hide();
+    $("#p4Resposta5").hide();
+    $("#p5Resposta1").hide();
+    $("#p5Resposta2").hide();
+    $("#p5Resposta3").hide();
+    $("#p5Resposta4").hide();
+    $("#p5Resposta5").hide();
+
+    function escolherPersonagem(id) {
+
+        $("#telaEscolhaPersonagem").hide();
+                    
+        if (id == 1) {
+            $("#Personagem1").show();
+        } else if (id == 2) {
+            $("#Personagem2").show();
+        } else if (id == 3) {
+            $("#Personagem3").show();
+        } else if (id == 4) {
+            $("#Personagem4").show();
+        } else if (id == 5) {
+            $("#Personagem5").show();
+        }
+        charactersEtapa ++;
+    }
+
+    var qtdePerguntasRestantesP1 = 4;
+    var qtdePerguntasRestantesP2 = 4;
+    var qtdePerguntasRestantesP3 = 4;
+    var qtdePerguntasRestantesP4 = 4;
+    var qtdePerguntasRestantesP5 = 4;
+
+    function  desabilitarBotaoEMostrarResposta(idBotao, idPersonagem ,idResposta) {
+
+        let botao = document.getElementById(idBotao);
+        let classname = "botaoPersonagem" + idPersonagem;
+        let classe = document.getElementsByClassName(classname);
+        let resposta = 'p' + idPersonagem + 'Resposta' + idResposta;
+        let mostraResposta = document.getElementById(resposta);
+        let perguntasRestantes = 'qtdePerguntasRestantesP' + idPersonagem 
+
+        // Desabilita o botão clicado
+        $(botao).removeClass(classname);
+        $(botao).prop('disabled',true);        
+        $(botao).css({color: "#FFFB48",backgroundColor: "#000"});
+        
+
+        // Drecrementa a quantidade de perguntas restantes
+        switch (idPersonagem) {
+            case 1:
+                qtdePerguntasRestantesP1--;
+                break;
+            case 2:
+                qtdePerguntasRestantesP2--;
+                break;
+            case 3:
+                qtdePerguntasRestantesP3--;
+                break;
+            case 4:
+                qtdePerguntasRestantesP4--;
+                break;
+            case 5:
+                qtdePerguntasRestantesP5--;
+                break;
+            default:
+                break;
+            }
+
+        // Mostra a resposta da pergunta feita e esconde as demais.
+        for (let i = 1; i <=  5; i++) {
+            if (i != idResposta) {
+                var esconderResposta = document.getElementById('p' + idPersonagem + 'Resposta' + i);
+                $(esconderResposta).hide();
+            }
+            $(mostraResposta).show();
+        }   
+
+        // Desabilita a Quarta Pergunta para não permitir fazê-la;
+        var botaoRestante = document.getElementsByClassName(classname);
+        if (qtdePerguntasRestantesP1 <= 0 && idPersonagem == 1) {            
+            desabilitarQuartaPergunta(botaoRestante);
+        } else if (qtdePerguntasRestantesP2 <= 0 && idPersonagem == 2) {
+            desabilitarQuartaPergunta(botaoRestante);
+        } else if (qtdePerguntasRestantesP3 <= 0 && idPersonagem == 3){
+            desabilitarQuartaPergunta(botaoRestante);
+        } else if (qtdePerguntasRestantesP4 <= 0 && idPersonagem == 4){
+            desabilitarQuartaPergunta(botaoRestante);
+        } else if (qtdePerguntasRestantesP5 <= 0 && idPersonagem == 5){
+            desabilitarQuartaPergunta(botaoRestante);
+        }
+
+        habilitarBotaoPrenderCulpado();
+
+    }
+
+     function desabilitarQuartaPergunta(botaoRestante) {
+        $(botaoRestante).prop('disabled',true);
+        $(botaoRestante).css({color: "#BBB",backgroundColor: "#333"});      
+     }
+    
+    function habilitarBotaoPrenderCulpado() {
+        botaoPrenderCulpado = document.getElementById("prenderCulpado");
+        if (qtdePerguntasRestantesP1 + qtdePerguntasRestantesP2 + qtdePerguntasRestantesP3 + qtdePerguntasRestantesP4 + qtdePerguntasRestantesP5 == 0) {
+            $(botaoPrenderCulpado).prop('disabled',false);
+            $(botaoPrenderCulpado).css({color: "#000",backgroundColor: "yellow"});
+        }
+    }
+    
+    
+    $("#prenderCulpado").click(function() {
+        window.location.href = "./interrogatorio.html";           
+    })
+</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução</title>
+    <script src="./bootstrap.bundle.min.js"></script>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    <div class="slideImg img-fluid col-12 body" style="background-image: url(../img/HouseBackground.png); background-repeat: no-repeat; background-size: cover; display: flex; align-items: center; justify-content: flex-end; margin: 0; width: 100%; position: absolute" id="right_img">
+        <div style="position: relative;" class="proxima"></div>
+        <img style="position: relative;" src="../img/interf1.png" class="proxima">
+        <div class="col-10" style="position: absolute; width: 45%; display: flex; justify-content:flex-end; margin: 75px;">
+            <h1 style="color: white; position: absolute; font-size: 65px; font-family: 'Rubik', sans-serif; margin-top: -35vh;">Introdução</h1>
+            <p style="color: white; position: absolute; text-align:right; font-size: 26px; font-family: 'Rubik', sans-serif; ; margin-top: -22vh;">Esta noite na Pampulha, seis amigos estavam aproveitando o feriado para fazer uma pequena festa na casa de um deles.</p>
+            <p style="color: white; position: absolute; text-align:right; font-size: 26px; font-family: 'Rubik', sans-serif; ; margin-top: -12vh;">O que era para ser apenas mais uma social entre  amigos acabou se tornando uma cena de assassinato brutal. A vítima: José Carlos, de 23 anos. Seu corpo foi encontrado no banheiro da mansão com marcas de esfaqueamento e queimaduras provocadas por contato da pele com fogo em conjunto com substância inflamatória. Havia também pistas no local e no corpo evidenciando uma possível luta corporal entre a vítima e o assassino. Além disso, o cadáver de José estava encharcado de água.</p>
+        </div>               
+    </div>
+
+    <div class="slideImg img-fluid col-12 body" style="background-image: url(../img/BanheiroSangue.png); background-repeat: no-repeat; background-size: cover; display: flex; align-items: center; justify-content: flex-start; margin: 0; width: 100%; position: absolute"  id="left_img">
+        <img style="position: relative;" src="../img/interf2.png" class="proxima"> 
+        <div class="col-10" style="position: absolute; width: 36%; display: flex; justify-content:flex-start; margin: 75px;">
+            <!-- <h1 style="color: white; position: absolute; font-size: 65px; font-family: 'Rubik', sans-serif; margin-top: -35vh;">Introdução</h1> -->
+            <p style="color: white; position: absolute; text-align: left; font-size: 26px; font-family: 'Rubik', sans-serif; ; margin-top: -16vh;">Você é o detetive convocado para investigar o caso, o seu papel é interrogar os cinco suspeitos que estiveram na casa no momento do crime, coletar pistas e prender o verdadeiro culpado.</p>
+            <p style="color: white; position: absolute; text-align: left; font-size: 26px; font-family: 'Rubik', sans-serif; ; margin-top: 0vh;">Nota: os suspeitos não parecem estar muito dispostos a colaborar, então você deve estar bem atento pois eles não irão responder nada duas vezes, e pode ser que ainda sim não consiga todas as respostas que deseja.</p>
+            <p style="color: white; position: absolute; text-align: left; font-size: 26px; font-family: 'Rubik', sans-serif; ; margin-top: 16vh;">Preste bastante atenção e boa sorte!</p>
+        </div>  
+    </div>
+
+    <img src="../img/previous.png" style="position: relative; margin: 50px" class="voltar" id="previous">
+ 
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+    body {
+        margin: 0;
+    }
+    
+
+</style>
+
+<script>
+    $(document).ready(function () {
+    var introEtapa = 1;
+    $("div.slideImg img.proxima").click(function (event) {
+        event.preventDefault();
+        // proximoEtapa();
+        // return;
+        proximoEtapa();
+
+        if (introEtapa == 3) {
+            window.location.href = "./characters.html";
+        }
+    });
+
+    $("body img.voltar").click(function (event) {
+        event.preventDefault();
+       
+        voltarEtapa();
+        if (introEtapa >= 1) {
+            atualizarTela();
+        }
+        else {
+            window.location.href = "./index.html";
+        }
+    });
+
+    function proximoEtapa() {
+        introEtapa++;
+        atualizarTela();
+    }
+    function voltarEtapa() {
+        introEtapa--;
+        atualizarTela();
+    }
+
+    function atualizarTela() {        
+        $("#right_img").hide();
+        $("#left_img").hide();
+
+        if (introEtapa == 1) {
+            $("#right_img").show();
+        }
+        else if (introEtapa == 2) {
+            $("#left_img").show()
+        }
+    }
+    atualizarTela();
+});
+
+</script>
+</html>

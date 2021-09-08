@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body style="background-image: url(../img/CapaFriends.png); background-repeat: no-repeat; background-size: cover" class="img-fluid col-12">
+    <button id="iniciar" onclick="iniciar()">PLAY</button>
+    
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+    #iniciar {
+       color: #000;
+       background-color: yellow;
+       width: 250px;
+       height: 60px;
+       margin-top: 740px;
+       font-family: 'Rubik', sans-serif;
+       font-style: medium;
+       font-size: 35px;
+       color: #000;
+       /*border-style: solid;*/
+       border-radius: 8px;
+       /*border-color: white;*/
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+</style>
+
+<script>
+    function iniciar() {
+        window.location.href = "./intro.html";
+    }
+</script>
+</html>
